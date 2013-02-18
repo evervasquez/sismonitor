@@ -1,0 +1,11 @@
+label, input {  }
+input.text  { margin-bottom:3px; width:95%; padding: .1em; text-align: right; }
+select      { margin-bottom:3px; width:95%; padding: .1em; }
+button      { margin-bottom:3px; width:95%; padding: .1em; cursor: pointer; }
+fieldset    { padding:0; border:0; margin-top:25px; }
+.detail-contain {margin:0;}
+.detail-contain table { margin:0 ; border-collapse: collapse;}
+.detail-contain table td, .detail-contain table th { border: 1px solid #eee; padding: .2em; text-align: center; }
+.detail-contain table tbody tr:hover { color: #212121; background: #dadada;}
+.detail-contain table tbody tr:focus { color: #212121; background: #dadada; }
+
