@@ -40,9 +40,9 @@ $(function(){
             
             setValue_("#nombre_escuela", data_.institucion.inst_nombre);
             setValue_("#ano_ingreso", data_.institucion.inst_anio_ingreso);
-            setValue_("intervencion_otro", data_.institucion.inst_pip);
-            setValue_("#nombre_proyecto_otro", data_.institucion.inst_nombre_pip);
-            setValue_("#ano_ingreso_otro", data_.institucion.inst_anio_ingreso_pip);
+            //setValue_("intervencion_otro", data_.institucion.inst_pip);
+            //setValue_("#nombre_proyecto_otro", data_.institucion.inst_nombre_pip);
+            //setValue_("#ano_ingreso_otro", data_.institucion.inst_anio_ingreso_pip);
             setValue_("#telefono_comunitario", data_.institucion.inst_telefono_comu);
             setValue_("#turno_manana_ini", data_.institucion.inst_md);
             setValue_("#turno_manana_fin", data_.institucion.inst_ma);

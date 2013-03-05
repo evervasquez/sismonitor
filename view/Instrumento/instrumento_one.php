@@ -179,7 +179,7 @@ if ($edicion == true) {
     .anulado{
         border: solid 1px red;
         background-color: red;
-        padding-left: 20px;
+        /*padding-left: 20px;*/
         width: 150px;
         height: 70px;
         padding-bottom: 13px;
@@ -193,9 +193,8 @@ if ($edicion == true) {
         padding: 0px;
         margin: 0px;
     }
-    label {
-        padding-left: 20px;
-        height: 16px;
+    label.enunciado {
+        padding: 0;
     }
     .chk_estado{
         color: #000;
@@ -229,7 +228,7 @@ if ($edicion == true) {
         padding-left: 20px;
         height: 16px;
     }
-
+    
     input[type="checkbox"] + label{
         background: url("images/fuglychecks.png") 0 0 no-repeat;
     }
@@ -242,14 +241,15 @@ if ($edicion == true) {
     input[type="checkbox"]:checked:focus + label{
         background-position: 0 -48px;
     }
-
+    td{
+        padding: 0;
+    }
     span.k-invalid-msg{
         margin-left: 5px;
     }
     .invalid{
         color: red;
     }
-
 </style>
 <div class="div_container"  style="min-height:850px; " >
     <div id="ins_name">INSTRUMENTO N°<?php echo $n_ . ": " . $instrumento; ?></div>
@@ -295,68 +295,76 @@ if ($edicion == true) {
                                 <div id="validado">
                                     <div id="tabs-1">
 
-                                        <table id="prueba" style="font-size:12px; width:98%; text-align: left;">
-                                            <tr><td><input type="hidden"  name="action" value="<?php echo $action; ?>" /></td></tr>
+                                        <table id="prueba" style="font-size:12px; width:100%; text-align: left;">
+                                            <tr><td colspan="5"><input type="hidden"  name="action" value="<?php echo $action; ?>" /></td></tr>
                                             <tr>
-                                                <td><label for="enca_id">N° Encabezado</label></td>
-                                                <td> 
-                                                    <input type="text" id="enca_id" name="enca_id" required class="input_text" value="<?php echo $enca_id; ?>" style="width:100px"/>
+                                                <td style="width: 18%"><label class="enunciado" for="enca_id">N° Encabezado</label></td>
+                                                <td colspan="2" style="width: 48%"> 
+                                                    <input type="text" id="enca_id" name="enca_id" required class="input_text" value="<?php echo $enca_id; ?>"/>
                                                 </td>
-                                                <td class='chk_dir' ><div id="anulado"><input type='checkbox' name="inst_estado" id="inst_estado" value="1" />
-                                                        <label style=" font-size: 14"id="check_estado" for="inst_estado">ANULADO</label></div></td>
-                                                <td width="130px"><span class="k-invalid-msg" data-for="enca_id"></span></td>
+                                                
+                                                <td style="width: 13%" class='chk_dir' ><div id="anulado"><input type='checkbox' name="inst_estado" id="inst_estado" value="1" />
+                                                        <label style=" font-size: 14"id="check_estado" for="inst_estado">ANULADO</label></div>
+                                                </td>
+                                                <td style="width: 21%"><span class="k-invalid-msg" data-for="enca_id"></span></td>
                                             </tr>
-                                            <tr>    
-                                                <td><label for="codigo_modular">Código Modular de la escuela:</label></td>
-                                                <td><input type="text" required style="width:100px;" class="input_text" maxlength="7" id="codigo_modular" name="codigo_modular" value="<?php echo $cod_modular; ?>"/></td>
-                                                <td wicth="130px"><a href="javascript:instrumento_search()" class="btn_other" id="btn_codigo_modular">Buscar</a></td>
-                                                <td><span class="k-invalid-msg" data-for="codigo_modular"></span></td>
+                                            <tr style="height: 10px; padding: 0">
+                                                <td colspan="5"></td>
                                             </tr>
-                                            <tr>                                            
-                                                <td><label for="nombre_apellido_facilitador">Nombre de facilitador:</label></td>
-                                                <td colspan="2">
-                                                    <input  style="width:340px" required class="input_text" id="nombre_apellido_facilitador" name="nombre_apellido_facilitador" value="<?php echo $facilitador['nombre']; ?>"  />
+                                            <tr style="height: 40px; padding: 0">                                            
+                                                <td><label class="enunciado"  for="nombre_apellido_facilitador">1.1 Nombre de facilitador:</label></td>
+                                                <td>
+                                                    <input  style="width:280px" required class="input_text" id="nombre_apellido_facilitador" name="nombre_apellido_facilitador" value="<?php echo $facilitador['nombre']; ?>"  />
                                                     <input type="hidden"  id="faci_id" name="faci_id" value="<?php echo $facilitador['id_']; ?>"/>
                                                 </td>
-                                                <td><span class="k-invalid-msg" data-for="nombre_apellido_facilitador"></span></td>
+                                                <td style="width: 120px">
+                                                    <span class="k-invalid-msg" data-for="nombre_apellido_facilitador"></span>
+                                                </td>
+                                                <td><label class="enunciado" for="enca_fecha">1.2 Fecha:</label></td>
+                                                <td><input type="text" style="width:100px; " required class="input_text"  name="enca_fecha" id="enca_fecha" maxlength="8"/>
+                                                
                                             </tr>
+                                           
                                             <tr>
-
-                                                <td ><label for="enca_fecha">Fecha:</label></td>
-                                                <td colspan="2" ><input type="text" style="width:160px; " required class="input_text"  name="enca_fecha" id="enca_fecha" maxlength="8"/></td>
-                                                <td><span class="k-invalid-msg" data-for="enca_fecha"></span></td>
-                                            </tr>
-                                            <tr>
-
-                                                <td width="302"  ><label for="grup_intervencion">Grupo de Intervención:</label></td>
-                                                <td colspan="2" >
+                                                <td ><label class="enunciado" for="grup_intervencion">1.3 Grupo de Intervención:</label></td>
+                                                <td colspan="3" >
                                                     <select name="grup_intervencion" id="grup_intervencion"  style="width:110px; margin:2px;padding:1px;margin-left:5px;" required >
                                                         <option value="">Seleccione...</option>
                                                         <option value="52">52 San Martin</option>
                                                         <option value="57">57 Ucayali</option>
                                                         <option value="73">73 Ucayali</option>
                                                     </select>
-                                                </td>
-                                                <td><span class="k-invalid-msg" data-for="grup_intervencion"></span></td>
-
+                                               <span class="k-invalid-msg" data-for="grup_intervencion"></span></td>
+                                                <td><span class="k-invalid-msg" data-for="enca_fecha"></span></td>    
+                                            </tr>
+                                            <tr style="height: 10px; padding: 0">
+                                                <td colspan="5"></td>
                                             </tr>
                                             <tr>
-
-                                                <td ><label for="num_escuela">Número de la Escuela:</label></td>
-                                                <td><input type="text" style="width:100px" required class="input_text" id="num_escuela" name="num_escuela" onkeypress="return soloNumeros(event)"/></td>
-                                                <td><a href="javascript:instrumento_search_escuela()" class="btn_other" id="btn_num_escuela">Buscar</a></td>
-                                                <td><span class="k-invalid-msg" data-for="num_escuela"></span></td>        
+                                                <td><label class="enunciado" for="num_escuela">1.4 Número y nombre de la I.E:</label></td>
+                                                <td colspan="2" ><input type="text" style="width:100px" required class="input_text" id="num_escuela" name="num_escuela" onkeypress="return soloNumeros(event)"/>                                               
+                                                <!--<span><a href="javascript:instrumento_search_escuela()" class="btn_other" id="btn_num_escuela">Buscar</a></span>-->
+                                                
+                                                <input type="text" style="text-transform: uppercase;" required class="input_text" id="nombre_escuela" name="nombre_escuela">
+                                                <a href="javascript:inicio_popup()" class="btn_other" id="btn_nombre_escuela" >Buscar</a>
+                                                
+                                                </td>                                                
+                                                <td><label class="enunciado" for="codigo_modular">1.5 Código Modular de la I.E:</label></td>
+                                                <td><input type="text" style="width: 80px" required class="input_text" maxlength="7" id="codigo_modular" name="codigo_modular" value="<?php echo $cod_modular; ?>"/>
+                                                <a href="javascript:instrumento_search()" class="btn_other" id="btn_codigo_modular">Buscar</a>
+                                                
+                                                </td>
+                                            </tr> 
+                                            <tr style="height: 21px; padding: 0">
+                                                <td></td>
+                                                <td colspan="2" ><span class="k-invalid-msg" data-for="num_escuela"></span>
+                                                <span class="k-invalid-msg" data-for="nombre_escuela"></span></td>
+                                                <td></td>
+                                                <td><span class="k-invalid-msg" data-for="codigo_modular"></span></td>
                                             </tr>
                                             <tr>                                            
-                                                <td><label for="nombre_escuela">Nombre de la Escuelas:</label></td>
-                                                <td><input type="text" style="width:340px;text-transform: uppercase;" required class="input_text" id="nombre_escuela" name="nombre_escuela"  />
-                                                <td><a href="javascript:inicio_popup()" class="btn_other" id="btn_nombre_escuela" >Buscar</a></td>
-                                                <td><span class="k-invalid-msg" data-for="nombre_escuela"></span></td>                                       
-                                            </tr> 
-
-                                            <tr>                                            
-                                                <td ><label>Año de ingreso de la escuela al Proyecto AprenDes/SUMA:</label></td>
-                                                <td colspan="3" ><select name="ano_ingreso" id="ano_ingreso"  style="width:110px; margin:2px;padding:1px;margin-left:5px;">
+                                                <td ><label class="enunciado" >1.6 Año de ingreso de la escuela al Proyecto AprenDes/SUMA:</label></td>
+                                                <td colspan="4" ><select name="ano_ingreso" id="ano_ingreso"  style="width:110px; margin:2px;padding:1px;margin-left:5px;">
                                                         <option value="">Seleccione...</option>     
                                                         <option value="2004">2004</option>
                                                         <option value="2005">2005</option>
@@ -368,12 +376,14 @@ if ($edicion == true) {
                                                         <option value="2011">2011</option>
                                                         <option value="2012">2012</option>
                                                     </select></td>
-
-
                                             </tr>
-                                            <tr><td colspan="4"></td></tr>
+                                            <tr style="height: 10px; padding: 0">
+                                                <td colspan="5"></td>
+                                            </tr>
+                                          
+<!---------------                                            
                                             <tr>
-
+                                         
                                                 <td><label>¿La escuela se encuentra bajo la intervención de algun otro Proyecto y programa:</label></td>
                                                 <td colspan="3"><input type="radio" id="1-1-si" value="1" name="intervencion_otro" />
                                                     <label for="1-1-si">Si</label>
@@ -395,24 +405,16 @@ if ($edicion == true) {
                                                 <td colspan="3"><input type="text" style="width:130px" class="input_text" maxlength="4" onKeyPress="return soloNumeros(event)" id="ano_ingreso_otro" name="ano_ingreso_otro"   /></td>
 
                                             </tr>
-
-
+                                          
                                             <tr>
-
-                                                <td >Telefono comunitario:</td>
-                                                <td colspan="3">
+                                          -------->
+                                                <td><label class="enunciado" >1.12 Telefono comunitario:</label></td>
+                                                <td colspan="4">
                                                     <input type="text" style="width:110px" class="input_text"  maxlength="12" id="telefono_comunitario"  name="telefono_comunitario"/>
                                                 </td>
 
 
                                             </tr>
-                                            <tr>
-
-                                                <td colspan="4">&nbsp;</td>
-
-                                            </tr>
-
-
                                         </table>
 
                                         <div style="width: 100%;height: 200px;" >

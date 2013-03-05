@@ -274,10 +274,10 @@ class Encabezado extends Main  {
         $institucion->inst_cod=$a['codigo_modular'];//s
         $institucion->inst_tipo=$a['tipo_escuela'];//s
         $institucion->ubi_id=$a['dist_id'];//s
-        $institucion->inst_pip=$a['intervencion_otro'];//s
-        $institucion->inst_nombre_pip=$a['nombre_proyecto_otro'];//s
+        //$institucion->inst_pip=$a['intervencion_otro'];//s
+        //$institucion->inst_nombre_pip=$a['nombre_proyecto_otro'];//s
         $institucion->inst_anio_ingreso=$a['ano_ingreso'];//s
-        $institucion->inst_anio_ingreso_pip=$a['ano_ingreso_otro'];//s
+        //$institucion->inst_anio_ingreso_pip=$a['ano_ingreso_otro'];//s
         $institucion->inst_telefono_comu=$a['telefono_comunitario'];//s
         $institucion->inst_comunidad=$a['lug_id'];//s
         $institucion->inst_md=$a['turno_manana_ini'];//s
@@ -532,9 +532,9 @@ class Encabezado extends Main  {
             $institucion->inst_cod=$a['codigo_modular'];
             $institucion->inst_tipo=$a['tipo_escuela'];
             $institucion->ubi_id=$a['dist_id'];
-            $institucion->inst_pip=$a['intervencion_otro'];
-            $institucion->inst_nombre_pip=$a['nombre_proyecto_otro'];
-            $institucion->inst_anio_ingreso_pip=$a['ano_ingreso_otro'];
+            //$institucion->inst_pip=$a['intervencion_otro'];
+            //$institucion->inst_nombre_pip=$a['nombre_proyecto_otro'];
+            //$institucion->inst_anio_ingreso_pip=$a['ano_ingreso_otro'];
             $institucion->inst_anio_ingreso=$a['ano_ingreso'];
             $institucion->inst_telefono_comu=$a['telefono_comunitario'];
             $institucion->inst_comunidad=$a['lug_id'];

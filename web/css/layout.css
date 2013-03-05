@@ -72,17 +72,17 @@ body
 
 #header
 {
-    background: #443B58 url(../images/banner.jpg);    
+    background: #443B58 border-box url(../images/banner.jpg);    
     float: left;
     height:140px;
-    width:100%;
+    width:105%;
     padding-bottom: 0px;
     
 }
 #content {
     background: #fff;
     float: left;
-    width: 100%;
+    width: 105%;
     min-height: 500px;
     
 }
