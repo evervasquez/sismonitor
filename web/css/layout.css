@@ -484,3 +484,11 @@ img {
     margin-bottom: 3px;
 /*    text-transform: uppercase;*/
 }
+.input_t_1 {
+   font-size: 12px !important;
+   font-weight: 500;
+   padding: 3px;
+   color:#333;   
+   font-family: arial;   
+   margin:1px 3px;
+}

@@ -1,4 +1,4 @@
-/* 
+/*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -11,7 +11,13 @@ var _item=0;
 
 
 //****************
-
+function esnulo(v){
+    if(isNaN(v)){
+        return 0;
+    }else{
+        return v;
+    }
+}
 function soloNumeros(evt){
     evt = (evt) ? evt : event; //Validar la existencia del objeto event
     var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode : ((evt.which) ? evt.which : 0)); //Extraer el codigo del caracter de uno de los diferentes grupos de codigos
@@ -26,8 +32,8 @@ function inicio_popup(){
     //mi_popup=window.open('index.php?controller=Institucion&action=mostrar_instituciones','Nombres de Escuelas','resizable=yes,width=720,height=300, directories=no');
     //mi_popup.
     $('#buscar_i').load('index.php?controller=Institucion&action=mostrar_instituciones', function(){
-         $('#buscar_i').show("slow")
-         $('#q').focus();
+        $('#buscar_i').show("slow")
+        $('#q').focus();
     })
     //mi_popup.moveTo(330, 180);
     $("#fondooscuro").fadeIn(400);
@@ -51,16 +57,16 @@ $(function(){
         {
             text:"Seleccionar",
             click: function() {
-                            
-                            
+
+
                 var id_= $("#dist_id_ option:selected").val();
                 var idd= $("#dist_id_select").val();
                 var part= idd.split('_');
                 $("#"+part[0]+'_'+part[1]+'_13').attr("value",id_);
-                            
+
                 var name_3= $("#dist_id_ option:selected").text();
                 $("#"+part[0]+'_'+part[1]+'_12').attr("value",name_3);
-                $(this).dialog("close"); 
+                $(this).dialog("close");
             }
         }
         ]
@@ -69,7 +75,7 @@ $(function(){
         collapsible: true
     });
     $("#dep_id").bind('blur click',function(){
-       
+
         var dep_id = $(this).val();
         cmbLoadAjax("index.php","#prov_id",{
             controller:'Instrumento',
@@ -85,12 +91,12 @@ $(function(){
             action:'getListaDistritos',
             id:pov_id
         });
-        
+
         if(pov_id!=null){
             set_cookie("prov",pov_id);
         }
     });
-     
+
     $("#dist_id").bind('blur click',function(){
         var dist_id = $(this).val();
         if(!isNaN(dist_id)){
@@ -104,7 +110,7 @@ $(function(){
             action:'getListaProvincias',
             id:dep_id
         });
-        //set_cookie("dep",dep_id);
+    //set_cookie("dep",dep_id);
     });
     $("#prov_id_").bind('blur click',function(){
         var pov_id = $(this).val();
@@ -113,53 +119,59 @@ $(function(){
             action:'getListaDistritos',
             id:pov_id
         });
-        
+
         if(pov_id!=null){
             set_cookie("prov",pov_id);
         }
     });
-     
+
     $("#dist_id_").bind('blur click',function(){
         var dist_id = $(this).val();
         if(!isNaN(dist_id)){
             set_cookie("dist",dist_id);
         }
     });
-    
 
-//AGREGADO***********************************    
-$("#numero_padres").keyup(function(){
-    var n_1,n_2,n_3,n_4;
-    n_1=parseInt($(this).val());
-    n_2=parseInt($('#numero_padres_d').val());
-    n_3=parseInt($('#numero_madres').val());
-    n_4=parseInt($('#numero_madres_d').val());
-    $('#numero_padres_t').attr('value' ,ifNaN(n_1) + ifNaN(n_2) + ifNaN(n_3) + ifNaN(n_4)); 
-})
 
-$("#numero_padres_d").keyup(function(){
-    var n_2,n_3,n_4;;
-    n_2=parseInt($(this).val()) + parseInt($('#numero_padres').val());
-    n_3=parseInt($('#numero_madres').val());
-    n_4=parseInt($('#numero_madres_d').val());
-    $('#numero_padres_t').attr('value' ,ifNaN(n_2) + ifNaN(n_3) + ifNaN(n_4)); 
-})
+    //AGREGADO***********************************
+    $("#numero_padres_d").keyup(function(){
+        var n_2;
+        n_2=parseInt($(this).val()) + esnulo(parseInt($('#numero_padres').val()));
+        $('#total_padres').attr('value' ,ifNaN(n_2));
+        $('#total_CD').attr('value',esnulo(parseInt($(this).val()))+esnulo(parseInt($('#numero_madres_d').val())));
+        $('#total').attr('value', esnulo(parseInt($('#total_CD').val()))+esnulo(parseInt($('#total_SD').val())));
+    })
 
-$("#numero_madres").keyup(function(){
-    var n_3, n_4;
-    n_4=parseInt($('#numero_madres_d').val());
-    n_3=parseInt($(this).val()) + parseInt($('#numero_padres').val()) + parseInt($('#numero_padres_d').val());
-    $('#numero_padres_t').attr('value' ,ifNaN(n_3)+ifNaN(n_4)); 
-})
+    $("#numero_padres").keyup(function(){
+        var n_1,n_2;
+        n_1=esnulo(parseInt($(this).val()));
+        n_2=esnulo(parseInt($('#numero_padres_d').val()));
+        $('#total_padres').attr('value' ,n_1 + n_2);
+        $('#total_SD').attr('value',n_1+esnulo(parseInt($('#numero_madres').val())));
+        $('#total').attr('value', esnulo(parseInt($('#total_CD').val()))+esnulo(parseInt($('#total_SD').val())));
+    })
 
-$("#numero_madres_d").keyup(function(){
-    var n_4;
-    n_4=parseInt($(this).val()) + parseInt($('#numero_padres').val()) + parseInt($('#numero_padres_d').val()) + parseInt($('#numero_madres').val());
-    $('#numero_padres_t').attr('value' ,ifNaN(n_4)); 
-})
+    $("#numero_madres_d").keyup(function(){
+        var n_2;
+        n_2=parseInt($(this).val()) + esnulo(parseInt($('#numero_madres').val()));
+        $('#total_madres').attr('value' ,esnulo(n_2));
+        $('#total_CD').attr('value',esnulo(parseInt($('#numero_padres_d').val())) + esnulo(parseInt($(this).val())));
+        $('#total').attr('value', esnulo(parseInt($('#total_CD').val()))+esnulo(parseInt($('#total_SD').val())));
+    })
 
-//**********************
-    
+    $("#numero_madres").keyup(function(){
+        var n_1,n_2;
+        n_1=esnulo(parseInt($(this).val()));
+        n_2=esnulo(parseInt($('#numero_madres_d').val()));
+        $('#total_madres').attr('value' ,n_1 + n_2);
+        $('#total_SD').attr('value',n_1+esnulo(parseInt($('#numero_padres').val())));
+        $('#total').attr('value', esnulo(parseInt($('#total_CD').val()))+esnulo(parseInt($('#total_SD').val())));
+    })
+
+
+
+    //**********************
+
     $(".input_text_1").keyup(function(){
         var id_= $(this).attr("id");
         var n_=id_.split("_");
@@ -170,10 +182,10 @@ $("#numero_madres_d").keyup(function(){
             total+=ifNaN(parseInt($(this).attr("value")));
         });
         $("#poblacion_t_1").attr("value",total);
-         
+
         $("#poblacion_t_3").attr("value", ifNaN( $("#poblacion_t_1").val())+ ifNaN($("#poblacion_t_2").val()));
     });
-    
+
     $(".input_text_2").keyup(function(){
         var id_= $(this).attr("id");
         var n_=id_.split("_");
@@ -184,7 +196,7 @@ $("#numero_madres_d").keyup(function(){
             total+=ifNaN(parseInt($(this).attr("value")));
         });
         $("#poblacion_t_2").attr("value",total)
-       
+
         $("#poblacion_t_3").attr("value", ifNaN( $("#poblacion_t_1").val())+ ifNaN($("#poblacion_t_2").val()));
     });
 
@@ -199,7 +211,7 @@ $("#numero_madres_d").keyup(function(){
             total+=ifNaN(parseInt($(this).attr("value")));
         });
         $("#poblacion_t_4").attr("value",total);
-         
+
         $("#poblacion_t_6").attr("value", ifNaN( $("#poblacion_t_4").val())+ ifNaN($("#poblacion_t_5").val()));
     });
 
@@ -213,7 +225,7 @@ $("#numero_madres_d").keyup(function(){
             total+=ifNaN(parseInt($(this).attr("value")));
         });
         $("#poblacion_t_5").attr("value",total)
-       
+
         $("#poblacion_t_6").attr("value", ifNaN( $("#poblacion_t_4").val())+ ifNaN($("#poblacion_t_5").val()));
     });
 
@@ -228,7 +240,7 @@ $("#numero_madres_d").keyup(function(){
             total+=ifNaN(parseInt($(this).attr("value")));
         });
         $("#poblacion_t_3").attr("value",total);
-         
+
         $("#poblacion_t_7").attr("value", ifNaN( $("#poblacion_t_3").val())+ ifNaN($("#poblacion_t_6").val()));
     });
 
@@ -242,7 +254,7 @@ $("#numero_madres_d").keyup(function(){
             total+=ifNaN(parseInt($(this).attr("value")));
         });
         $("#poblacion_t_6").attr("value",total)
-       
+
         $("#poblacion_t_7").attr("value", ifNaN( $("#poblacion_t_3").val())+ ifNaN($("#poblacion_t_6").val()));
     });
 
@@ -250,97 +262,97 @@ $("#numero_madres_d").keyup(function(){
     //***************************************
 
     $("#enca_fecha" ).datepicker({
-        changeYear:true, 
+        changeYear:true,
         changeMonth:true,
         yearRange: "-80:+0"
-        
+
     });
     $("#turno_manana_ini").timepicker({
         ampm:true,
         timeOnlyTitle:'Seleccione el tiempo',
         currentText: 'Ahora',
         closeText: 'Cerrar'
-    }); 
+    });
     $("#turno_manana_fin").timepicker({
         ampm:true,
         timeOnlyTitle:'Seleccione el tiempo',
         currentText: 'Ahora',
         closeText: 'Cerrar'
-    }); 
+    });
     $("#turno_tarde_ini").timepicker({
         ampm:true,
         timeOnlyTitle:'Seleccione el tiempo',
         currentText: 'Ahora',
         closeText: 'Cerrar'
-    }); 
+    });
     $("#turno_tarde_fin").timepicker({
         ampm:true,
         timeOnlyTitle:'Seleccione el tiempo',
         currentText: 'Ahora',
         closeText: 'Cerrar'
-    }); 
+    });
     $("#duracion_desayuno_ini").timepicker({
         ampm:true,
         timeOnlyTitle:'Seleccione el tiempo',
         currentText: 'Ahora',
         closeText: 'Cerrar'
-    }); 
+    });
     $("#duracion_desayuno_fin").timepicker({
         ampm:true,
         timeOnlyTitle:'Seleccione el tiempo',
         currentText: 'Ahora',
         closeText: 'Cerrar'
-    }); 
+    });
     $("#duracion_recreo_ini").timepicker({
         ampm:true,
         timeOnlyTitle:'Seleccione el tiempo',
         currentText: 'Ahora',
         closeText: 'Cerrar'
-    }); 
+    });
     $("#duracion_recreo_fin").timepicker({
         ampm:true,
         timeOnlyTitle:'Seleccione el tiempo',
         currentText: 'Ahora',
         closeText: 'Cerrar'
-    }); 
+    });
     $("#duracion_almuerzo_ini").timepicker({
         ampm:true,
         timeOnlyTitle:'Seleccione el tiempo',
         currentText: 'Ahora',
         closeText: 'Cerrar'
-    }); 
+    });
     $("#duracion_almuerzo_fin").timepicker({
         ampm:true,
         timeOnlyTitle:'Seleccione el tiempo',
         currentText: 'Ahora',
         closeText: 'Cerrar'
-    }); 
-   
-   //validaciones
-      
-   
-   
+    });
+
+    //validaciones
+
+
+
     $("#frm_instrumento_send").submit(function(e){
         e.preventDefault();
-        
+
         var bval = true;
-//        var num;
-//        switch ($("#tipo_escuela").val()) { 
-//        case 'M2': num =2; break; 
-//        case 'M3': num =3; break; 
-//        case 'M4': num =4; break; 
-//        case 'M5': num =5; break; 
-//        case 'P': num =6; break; 
-//        case 'U': num =1; break; 
-//        default: 
-//            msg_alert_a("<span style='color:red;'>Escoja un Tipo de Escuela en la Pestaña TIPOLOGÍA</span>");return; 
-//        }
-//        
-//        for(var i=1; i<=num+1;i++){
-//            bval = bval && $("#personal_"+i+"_0").required();
-//            bval = bval && $("#personal_"+i+"_10").required();
-//            bval = bval && $("#personal_"+i+"_10").required();
-//        }
+        //        var num;
+        //        switch ($("#tipo_escuela").val()) {
+        //        case 'M2': num =2; break;
+        //        case 'M3': num =3; break;
+        //        case 'M4': num =4; break;
+        //        case 'M5': num =5; break;
+        //        case 'P': num =6; break;
+        //        case 'U': num =1; break;
+        //        default:
+        //            msg_alert_a("<span style='color:red;'>Escoja un Tipo de Escuela en la Pestaña TIPOLOGÍA</span>");return;
+        //        }
+        //
+        //        for(var i=1; i<=num+1;i++){
+        //            bval = bval && $("#personal_"+i+"_0").required();
+        //            bval = bval && $("#personal_"+i+"_10").required();
+        //            bval = bval && $("#personal_"+i+"_10").required();
+        //        }
         //bval = bval && $( "#enca_id").required();
         //bval = bval && $( "#nombre_apellido_facilitador").required();
         //bval = bval && $( "#enca_fecha").required();
@@ -354,11 +366,11 @@ $("#numero_madres_d").keyup(function(){
         //         bval = bval && $( "#turno_manana_ini").required();
         //         bval = bval && $( "#turno_manana_fin").required();
         //         bval = bval && $( "#turno_tarde_ini").required();
-        //         bval = bval && $( "#turno_tarde_fin").required();   
+        //         bval = bval && $( "#turno_tarde_fin").required();
         //         bval = bval && $( "#duracion_desayuno_ini").required();
-        //         bval = bval && $( "#duracion_desayuno_fin").required();    
+        //         bval = bval && $( "#duracion_desayuno_fin").required();
         //         bval = bval && $( "#duracion_recreo_ini").required();
-        //         bval = bval && $( "#duracion_recreo_fin").required();     
+        //         bval = bval && $( "#duracion_recreo_fin").required();
         //         bval = bval && $( "#duracion_almuerzo_ini").required();
         //         bval = bval && $( "#duracion_almuerzo_fin").required();
         //        bval = bval && $( "#telefono_comunitario").required();
@@ -366,34 +378,34 @@ $("#numero_madres_d").keyup(function(){
         //bval = bval && $( "#lugar_id").required();
         //       bval = bval && $( "#punto_referencial").required();
         //       bval = bval && $( "#enca_distancia").required();
-        //       bval = bval && $( "#tiempo_minutos").required();         
+        //       bval = bval && $( "#tiempo_minutos").required();
         //       bval = bval && $( "#form_transporte").required();
         //        bval = bval && $( "#numero_padres").required();
-//         
-//var isChecked;                
-//                 var groups = {}
-//                        $("#frm_instrumento_send input:radio").each(function () {
-//                        groups[this.name] = true;
-//                            });
-//                    $("#error_one_"+c_+"").remove();
-//                    for (group in groups) {
-//                        var radioButttons = $(":radio[name=" + group + "]").is(':checked');
-//                        isChecked = radioButttons;
-//
-//                         var b_= group.split('_');
-//                         var c_= b_[1];
-//                         
-//                         $("#error_one_"+c_+"").remove();
-//                        if (!isChecked) {
-//                           //var a_=$("<tr class='ui-state-error set' id='error_"+c_+"'><td colspan='4'>Por favor debe seleccionar una alternativa </td></tr>");
-//                            $("#ins1_"+c_).append("<tr class='ui-state-error set' id='error_one_"+c_+"'><td colspan='4'>Por favor debe seleccionar una alternativa </td></tr>");
-//                        }
-//                        else {
-//                            alert("estoy chekeado");
-//                        }
-//                    }
+        //
+        //var isChecked;
+        //                 var groups = {}
+        //                        $("#frm_instrumento_send input:radio").each(function () {
+        //                        groups[this.name] = true;
+        //                            });
+        //                    $("#error_one_"+c_+"").remove();
+        //                    for (group in groups) {
+        //                        var radioButttons = $(":radio[name=" + group + "]").is(':checked');
+        //                        isChecked = radioButttons;
+        //
+        //                         var b_= group.split('_');
+        //                         var c_= b_[1];
+        //
+        //                         $("#error_one_"+c_+"").remove();
+        //                        if (!isChecked) {
+        //                           //var a_=$("<tr class='ui-state-error set' id='error_"+c_+"'><td colspan='4'>Por favor debe seleccionar una alternativa </td></tr>");
+        //                            $("#ins1_"+c_).append("<tr class='ui-state-error set' id='error_one_"+c_+"'><td colspan='4'>Por favor debe seleccionar una alternativa </td></tr>");
+        //                        }
+        //                        else {
+        //                            alert("estoy chekeado");
+        //                        }
+        //                    }
         if(bval){
-            
+
             var data_ = $("#frm_instrumento_send").serializeArray();
 
             $.ajax({
@@ -406,19 +418,19 @@ $("#numero_madres_d").keyup(function(){
                 },
                 beforeSend:function (data){
                     msg_alert_a("Guardando ... ", 120);
-              
+
                 },
                 success: function(data){
                     $("#pop_msg_").dialog("close").remove();
-//                    if($.trim(data)=="")
-//                    {
-                        msg_alert_a("<span style='color:green;'>Se registro datos del instrumento correctamente</span>", 120);
-                        location.href="index.php?controller=Instrumento&action=show&id=I1";
-//                    }
-//                    else
-//                    {
-//                        msg_alert_a("Los datos no fueron guardados, por favor intente nuevamente", 120);
-//                    }
+                    //                    if($.trim(data)=="")
+                    //                    {
+                    msg_alert_a("<span style='color:green;'>Se registro datos del instrumento correctamente</span>", 120);
+                    location.href="index.php?controller=Instrumento&action=show&id=I1";
+                //                    }
+                //                    else
+                //                    {
+                //                        msg_alert_a("Los datos no fueron guardados, por favor intente nuevamente", 120);
+                //                    }
                 }
                 ,
                 error:function(data)
@@ -433,10 +445,10 @@ $("#numero_madres_d").keyup(function(){
             msg_alert_a("Debe llenar todos los campos del formulario",120);
         }
     });
-    
-    
 
-    
+
+
+
 
     //setValue_("#dep_id", get_cookie("dep"));
     $("#dep_id").trigger("change");
@@ -444,18 +456,18 @@ $("#numero_madres_d").keyup(function(){
     $("#dep_id").trigger("change");
     setValue_("#dist_id",get_cookie("dist"));
     //$(".itm_nn").mask("9999-99");
-   // $("#enca_fecha").mask("99/99/9999");
-      
+    // $("#enca_fecha").mask("99/99/9999");
+
     //$("#codigo_modular").mask("9999999");
     $(".num_").keypress(function (e){
         return permite(e,'num')
     });
-      
+
     $("#agregar_8").click(function()
     {
         agregar_personal();
     });
-		
+
     $.ajax({
         type: "GET",
         url: "index.php",
@@ -467,7 +479,7 @@ $("#numero_madres_d").keyup(function(){
         beforeSend:function (data){
 
         },
-        success: function(data_){ 
+        success: function(data_){
 
 
             $( "#nombre_apellido_facilitador" ).autocomplete({
@@ -475,7 +487,7 @@ $("#numero_madres_d").keyup(function(){
                 source: data_,
                 focus: function( event, ui ) {
                 $( "#nombre_apellido_facilitador" ).val( ui.item.label );
-                                        
+
                 return false;
                 },
                 select: function( event, ui ) {
@@ -491,10 +503,10 @@ $("#numero_madres_d").keyup(function(){
                 .append( "<a>" + item.label +"- "+ item.desc + "</a>" )
                 .appendTo( ul );
             };
-               
+
         }
     });
-    
+
     $.ajax({
         type: "GET",
         url: "index.php",
@@ -504,22 +516,22 @@ $("#numero_madres_d").keyup(function(){
             action:'get_lugares'
         },
         beforeSend:function (data){
-        
+
         },
         success: function(data_){
             $( "#lugar" ).autocomplete({
                 minLength: 0,
                 source: data_,
-                        
+
                 focus: function( event, ui ) {
                 $( "#lugar" ).val( ui.item.label );
-                                
+
                 return false;
                 },
                 select: function( event, ui ) {
                 $( "#lugaar" ).val( ui.item.label );
                 $( "#lugar_id" ).val( ui.item.value );
-				
+
                 return false;
                 },
                 change: function( event, ui ) {
@@ -537,7 +549,7 @@ $("#numero_madres_d").keyup(function(){
                 .appendTo( ul );
             };
         }
-    });  
+    });
     //PARTE DE REPORTERIA DE INSTRUMENTO NUERMO UNO
     $("#btn_buscar").click(function()
     {
@@ -548,10 +560,10 @@ $("#numero_madres_d").keyup(function(){
 			{
 			  $.post("index.php","controller=Instrumento&action=report_one&id="+$('#codigo_modular').val(),function(data)
 			  {
-			  
-			  
+
+
 			  });
-			
+
 			} */
     });
 });
@@ -573,12 +585,12 @@ function del_8(id)
             id:id_
         },
         beforeSend:function (data){
-        
+
         },
         success: function(data_){
             alert("Eliminado");
         }
-    });  
+    });
 }
 
 function save_instrumento(){
@@ -611,18 +623,31 @@ function search_val()
 }
 
 function agregar_personal()
-{   
+{
     var num;
-    switch ($("#tipo_escuela").val()) { 
-        case 'M2': num =2; break; 
-        case 'M3': num =3; break; 
-        case 'M4': num =4; break; 
-        case 'M5': num =5; break; 
-        case 'P': num =6; break; 
-        case 'U': num =1; break; 
-        default: 
-            msg_alert_a("<span style='color:red;'>Escoja un Tipo de Escuela en la Pestaña TIPOLOGÍA</span>");return; 
-        }
+    switch ($("#tipo_escuela").val()) {
+        case 'M2':
+            num =2;
+            break;
+        case 'M3':
+            num =3;
+            break;
+        case 'M4':
+            num =4;
+            break;
+        case 'M5':
+            num =5;
+            break;
+        case 'P':
+            num =6;
+            break;
+        case 'U':
+            num =1;
+            break;
+        default:
+            msg_alert_a("<span style='color:red;'>Escoja un Tipo de Escuela en la Pestaña TIPOLOGÍA</span>");
+            return;
+    }
     item+=1;
     _item+=1;
     if(item > num+1 && num!=6){
@@ -694,7 +719,7 @@ function agregar_personal()
     var _datos_2= $(str_2);
     $("#datos_informativos_2").append(_datos_2);
     $(".fecha").datepicker({
-		
+
         changeMonth: true,
         changeYear: true,
         showButtonPanel: true,
@@ -709,9 +734,9 @@ function agregar_personal()
         $("#select_departamento").dialog("open");
         $("#dist_id_select").attr("value",id_ );
     });
-                
+
     $(".fecha").mask("99/99/9999");
-    
+
 }
 
 
@@ -721,7 +746,7 @@ function agregar_personal()
 function instrumento_search()
 {
     var id_;
-    id_=  $("#codigo_modular").attr("value");    
+    id_=  $("#codigo_modular").attr("value");
     $.ajax({
         type: "GET",
         url: "index.php",
@@ -743,11 +768,11 @@ function instrumento_search()
             {
                 msg_alert_a("Documento de ID:<strong>"+id_+"</strong>, no encontrado");
             }
-            
+
         }
-    });  
-  
-  
+    });
+
+
 }
 
 ///****************************************
@@ -776,7 +801,7 @@ function instrumento_search_escuela()
             {
                 msg_alert_a("Documento de ID:<strong>"+id_+"</strong>, no encontrado");
             }
-            
+
         }
-    });  
+    });
 }

@@ -139,7 +139,7 @@
                 for(var i=1; i<=num+1;i++){
                     bval = bval && $("#personal_"+i+"_0").required();        
                     bval = bval && $("#personal_"+i+"_10").required();
-                    bval = bval && $("#personal_"+i+"_11").required();
+                    bval = bvaal && $("#personal_"+i+"_11").required();
                 }
                 if(bval){
                     msg_alert_a("<span style='color:red;'>Error !!, Porfavor Complete los campos sugeridos.</span>");
@@ -163,17 +163,17 @@ if ($edicion == true) {
 ?>
 
 <style>
-    
+
     #frmtotal{
-	padding:20px;
-	color: black;
-	position: fixed;
-	left: 24.5%;
-	top: 25%;
-	z-index: 1000;
-	text-align: center;
-	background-color: white;
-	border: 1px solid black;
+        padding:20px;
+        color: black;
+        position: fixed;
+        left: 24.5%;
+        top: 25%;
+        z-index: 1000;
+        text-align: center;
+        background-color: white;
+        border: 1px solid black;
         width: 700px;
     }
     .anulado{
@@ -201,7 +201,7 @@ if ($edicion == true) {
         font-size: 13px;
         font-weight:bold;
         background: red;
-        
+
     }
     input[type="radio"] + label{
         background: url("images/fuglychecks.png") 0 0 no-repeat;
@@ -228,7 +228,7 @@ if ($edicion == true) {
         padding-left: 20px;
         height: 16px;
     }
-    
+
     input[type="checkbox"] + label{
         background: url("images/fuglychecks.png") 0 0 no-repeat;
     }
@@ -302,7 +302,7 @@ if ($edicion == true) {
                                                 <td colspan="2" style="width: 48%"> 
                                                     <input type="text" id="enca_id" name="enca_id" required class="input_text" value="<?php echo $enca_id; ?>"/>
                                                 </td>
-                                                
+
                                                 <td style="width: 13%" class='chk_dir' ><div id="anulado"><input type='checkbox' name="inst_estado" id="inst_estado" value="1" />
                                                         <label style=" font-size: 14"id="check_estado" for="inst_estado">ANULADO</label></div>
                                                 </td>
@@ -322,9 +322,9 @@ if ($edicion == true) {
                                                 </td>
                                                 <td><label class="enunciado" for="enca_fecha">1.2 Fecha:</label></td>
                                                 <td><input type="text" style="width:100px; " required class="input_text"  name="enca_fecha" id="enca_fecha" maxlength="8"/>
-                                                
+
                                             </tr>
-                                           
+
                                             <tr>
                                                 <td ><label class="enunciado" for="grup_intervencion">1.3 Grupo de Intervención:</label></td>
                                                 <td colspan="3" >
@@ -334,7 +334,7 @@ if ($edicion == true) {
                                                         <option value="57">57 Ucayali</option>
                                                         <option value="73">73 Ucayali</option>
                                                     </select>
-                                               <span class="k-invalid-msg" data-for="grup_intervencion"></span></td>
+                                                    <span class="k-invalid-msg" data-for="grup_intervencion"></span></td>
                                                 <td><span class="k-invalid-msg" data-for="enca_fecha"></span></td>    
                                             </tr>
                                             <tr style="height: 10px; padding: 0">
@@ -344,21 +344,21 @@ if ($edicion == true) {
                                                 <td><label class="enunciado" for="num_escuela">1.4 Número y nombre de la I.E:</label></td>
                                                 <td colspan="2" ><input type="text" style="width:100px" required class="input_text" id="num_escuela" name="num_escuela" onkeypress="return soloNumeros(event)"/>                                               
                                                 <!--<span><a href="javascript:instrumento_search_escuela()" class="btn_other" id="btn_num_escuela">Buscar</a></span>-->
-                                                
-                                                <input type="text" style="text-transform: uppercase;" required class="input_text" id="nombre_escuela" name="nombre_escuela">
-                                                <a href="javascript:inicio_popup()" class="btn_other" id="btn_nombre_escuela" >Buscar</a>
-                                                
+
+                                                    <input type="text" style="text-transform: uppercase;" required class="input_text" id="nombre_escuela" name="nombre_escuela">
+                                                    <a href="javascript:inicio_popup()" class="btn_other" id="btn_nombre_escuela" >Buscar</a>
+
                                                 </td>                                                
                                                 <td><label class="enunciado" for="codigo_modular">1.5 Código Modular de la I.E:</label></td>
                                                 <td><input type="text" style="width: 80px" required class="input_text" maxlength="7" id="codigo_modular" name="codigo_modular" value="<?php echo $cod_modular; ?>"/>
-                                                <a href="javascript:instrumento_search()" class="btn_other" id="btn_codigo_modular">Buscar</a>
-                                                
+                                                    <a href="javascript:instrumento_search()" class="btn_other" id="btn_codigo_modular">Buscar</a>
+
                                                 </td>
                                             </tr> 
                                             <tr style="height: 21px; padding: 0">
                                                 <td></td>
                                                 <td colspan="2" ><span class="k-invalid-msg" data-for="num_escuela"></span>
-                                                <span class="k-invalid-msg" data-for="nombre_escuela"></span></td>
+                                                    <span class="k-invalid-msg" data-for="nombre_escuela"></span></td>
                                                 <td></td>
                                                 <td><span class="k-invalid-msg" data-for="codigo_modular"></span></td>
                                             </tr>
@@ -380,38 +380,38 @@ if ($edicion == true) {
                                             <tr style="height: 10px; padding: 0">
                                                 <td colspan="5"></td>
                                             </tr>
-                                          
-<!---------------                                            
-                                            <tr>
-                                         
-                                                <td><label>¿La escuela se encuentra bajo la intervención de algun otro Proyecto y programa:</label></td>
-                                                <td colspan="3"><input type="radio" id="1-1-si" value="1" name="intervencion_otro" />
-                                                    <label for="1-1-si">Si</label>
-                                                    <input type="radio" id="1-1-no" value="2" name="intervencion_otro" />
-                                                    <label for="1-1-no">No</label>
-                                                </td>
 
-                                            </tr>
-                                            <tr>
-
-                                                <td > Nombre del Proyecto/Programas(s)</td>
-                                                <td colspan="3"><input type="text" style="width:340px" class="input_text"  id="nombre_proyecto_otro" name="nombre_proyecto_otro"/>
-                                                </td>
-
-                                            </tr>
-                                            <tr>
-
-                                                <td > Año de Ingreso de la escuela a Proyecto/Programa:</td>
-                                                <td colspan="3"><input type="text" style="width:130px" class="input_text" maxlength="4" onKeyPress="return soloNumeros(event)" id="ano_ingreso_otro" name="ano_ingreso_otro"   /></td>
-
-                                            </tr>
-                                          
-                                            <tr>
-                                          -------->
-                                                <td><label class="enunciado" >1.12 Telefono comunitario:</label></td>
-                                                <td colspan="4">
-                                                    <input type="text" style="width:110px" class="input_text"  maxlength="12" id="telefono_comunitario"  name="telefono_comunitario"/>
-                                                </td>
+                                            <!---------------                                            
+                                                                                        <tr>
+                                                                                     
+                                                                                            <td><label>¿La escuela se encuentra bajo la intervención de algun otro Proyecto y programa:</label></td>
+                                                                                            <td colspan="3"><input type="radio" id="1-1-si" value="1" name="intervencion_otro" />
+                                                                                                <label for="1-1-si">Si</label>
+                                                                                                <input type="radio" id="1-1-no" value="2" name="intervencion_otro" />
+                                                                                                <label for="1-1-no">No</label>
+                                                                                            </td>
+                                            
+                                                                                        </tr>
+                                                                                        <tr>
+                                            
+                                                                                            <td > Nombre del Proyecto/Programas(s)</td>
+                                                                                            <td colspan="3"><input type="text" style="width:340px" class="input_text"  id="nombre_proyecto_otro" name="nombre_proyecto_otro"/>
+                                                                                            </td>
+                                            
+                                                                                        </tr>
+                                                                                        <tr>
+                                            
+                                                                                            <td > Año de Ingreso de la escuela a Proyecto/Programa:</td>
+                                                                                            <td colspan="3"><input type="text" style="width:130px" class="input_text" maxlength="4" onKeyPress="return soloNumeros(event)" id="ano_ingreso_otro" name="ano_ingreso_otro"   /></td>
+                                            
+                                                                                        </tr>
+                                                                                      
+                                                                                        <tr>
+                                                                                      -------->
+                                            <td><label class="enunciado" >1.12 Telefono comunitario:</label></td>
+                                            <td colspan="4">
+                                                <input type="text" style="width:110px" class="input_text"  maxlength="12" id="telefono_comunitario"  name="telefono_comunitario"/>
+                                            </td>
 
 
                                             </tr>
@@ -634,41 +634,75 @@ if ($edicion == true) {
                                         </table>
                                     </div>
                                     <div id="tabs-5">
+                                        <!-- SE MODIFICO 05/03/2013 -->
                                         <div style="width:100%;height:30px;font-weight:bold">
-                                            <p>5.1 Número de asociados (padres/madres de 
-                                                <input type="text" readonly="readonly" name="numero_padres_t" disable id="numero_padres_t" class="input_text" /> familia):</p>
-                                        </div>
-                                        <div style="width:100%;height:30px;font-weight:bold">
-                                            <label>a.-Número de Padres</label> 
-                                            <input type="text" name="numero_padres" id="numero_padres" required class="input_text" onkeypress="return soloNumeros(event)"/>
-                                            <span class="k-invalid-msg" data-for="numero_padres"></span>
-                                        </div>
-                                        <div style="width:100%;height:30px;font-weight:bold">
-                                            <label>b.-Número de Padres Discapacitados</label>
-                                            <input type="text" name="numero_padres_d" id="numero_padres_d" required class="input_text" onkeypress="return soloNumeros(event)"/>
-                                            <span class="k-invalid-msg" data-for="numero_padres_d"></span>
-                                        </div>
-                                        <div style="width:100%;height:30px;font-weight:bold">
-                                            <label>c.-Número de Madres</label>
-                                            <input type="text" name="numero_madres" id="numero_madres" required class="input_text" onkeypress="return soloNumeros(event)"/>
-                                            <span class="k-invalid-msg" data-for="numero_madres"></span>
-                                        </div>
-                                        <div style="width:100%;height:30px;font-weight:bold">
-                                            <label>d.-Número de Madres discapacitadas</label>
-                                            <input type="text" name="numero_madres_d" id="numero_madres_d" required class="input_text" onkeypress="return soloNumeros(event)"/>
-                                            <span class="k-invalid-msg" data-for="numero_madres_d"></span>
-                                        </div>
+                                            <p>5.1 Número de asociados y asociadas(padres/madres de familia):</p></div>
+                                        <table width="384" style="margin-top:20px" cellspacing="0" border="0"> 
+                                            <tr class="matriz_header_">
+                                                <td></td>
+                                                <td width="76">CD</td>
+                                                <td width="70">SD</td>             
+                                                <td width="77">TOTAL</td>
+                                            </tr>                
+                                            <tr>
+                                                <td>Padres de Familia</td>
+                                                <td><input type="text" style="width:90px" class="input_t_1 " id="numero_padres_d" name="numero_padres_d" onKeyPress="return soloNumeros(event)"/></td>
+                                                <td><input type="text" style="width:90px" class="input_t_1 " id="numero_padres" name="numero_padres" onKeyPress="return soloNumeros(event)"/></td>
+                                                <td><input type="text" readonly="readonly" style="width:90px" class="input_t_1 " id="total_padres" name="total_padres" onKeyPress="return soloNumeros(event)"/></td>
+                                            </tr>;
+
+                                            <tr>
+                                                <td>Madres de Familia</td>
+                                                <td><input type="text" style="width:90px" class="input_t_1 " id="numero_madres_d" name="numero_madres_d" onKeyPress="return soloNumeros(event)"/></td>
+                                                <td><input type="text" style="width:90px" class="input_t_1 " id="numero_madres" name="numero_madres" onKeyPress="return soloNumeros(event)"/></td>
+                                                <td><input type="text" readonly="readonly" style="width:90px" class="input_t_1 " id="total_madres" name="total_madres" onKeyPress="return soloNumeros(event)"/></td>
+                                            </tr>;
+
+                                            <tr>
+                                                <td>SUB TOTAL</td>
+                                                <td><input type="text" readonly="readonly" style="width:90px" class="input_t_1 " id="total_CD" name="total_CD" onKeyPress="return soloNumeros(event)"/></td>
+                                                <td><input type="text" readonly="readonly" style="width:90px" class="input_t_1 " id="total_SD" name="total_SD" onKeyPress="return soloNumeros(event)"/></td>
+                                                <td><input type="text" readonly="readonly" style="width:90px" class="input_t_1 " id="total" name="total" onKeyPress="return soloNumeros(event)"/></td>
+                                            </tr>                                             
+                                        </table>
+
+                                        <!--   <div style="width:100%;height:30px;font-weight:bold">
+                                               <p>5.1 Número de asociados (padres/madres de 
+                                                   <input type="text" readonly="readonly" name="numero_padres_t" disable id="numero_padres_t" class="input_text" /> familia):</p>
+                                           </div>
+                                           <div style="width:100%;height:30px;font-weight:bold">
+                                               <label>a.-Número de Padres</label> 
+                                               <input type="text" name="numero_padres" id="numero_padres" required class="input_text" onkeypress="return soloNumeros(event)"/>
+                                               <span class="k-invalid-msg" data-for="numero_padres"></span>
+                                           </div>
+                                           <div style="width:100%;height:30px;font-weight:bold">
+                                               <label>b.-Número de Padres Discapacitados</label>
+                                               <input type="text" name="numero_padres_d" id="numero_padres_d" required class="input_text" onkeypress="return soloNumeros(event)"/>
+                                               <span class="k-invalid-msg" data-for="numero_padres_d"></span>
+                                           </div>
+                                           <div style="width:100%;height:30px;font-weight:bold">
+                                               <label>c.-Número de Madres</label>
+                                               <input type="text" name="numero_madres" id="numero_madres" required class="input_text" onkeypress="return soloNumeros(event)"/>
+                                               <span class="k-invalid-msg" data-for="numero_madres"></span>
+                                           </div>
+                                           <div style="width:100%;height:30px;font-weight:bold">
+                                               <label>d.-Número de Madres discapacitadas</label>
+                                               <input type="text" name="numero_madres_d" id="numero_madres_d" required class="input_text" onkeypress="return soloNumeros(event)"/>
+                                               <span class="k-invalid-msg" data-for="numero_madres_d"></span>
+                                           </div>
+                                        -->
                                         <div style="width:100%;height:40px;font-weight:bold;">
                                             <br/>
                                             <p>5.2 Miembros de Municipio Escolar:</p>
                                         </div>
-                                        <table cellspacing="0" style="width:800px;" border="0">
+                                        <table cellspacing="0" style="width:900px;" border="0">
                                             <tr class="matriz_header_">
                                                 <td width="202">CARGO</td>
                                                 <td width="350">APELLIDOS, NOMBRES </td>
                                                 <td width="118">SEXO</td>
                                                 <td width="50">EDAD</td>
                                                 <td width="70">GRADO</td>
+                                                <td width="70">DISCAPACIDAD</td>
                                             </tr>
                                             <?php
                                             $tabla = "T3";
@@ -682,8 +716,14 @@ if ($edicion == true) {
                         </td>
                         <td><input type="text" id="' . $tabla . '_' . ($i_1 + 1) . '_3" name="' . $tabla . '_' . ($i_1 + 1) . '_3" class="input_text_" style="width:50px" /></td>
                         <td><input type="text" id="' . $tabla . '_' . ($i_1 + 1) . '_4" name="' . $tabla . '_' . ($i_1 + 1) . '_4" class="input_text_" style="width:70px"/></td>
+                            <td>
+                        <input type="radio" id="miembros_escolar_' . ($i_1 + 1) . '_5_1" name="' . $tabla . '_' . ($i_1 + 1) . '_5" value="1"/><label for="miembros_escolar_' . ($i_1 + 1) . '_5_1">SI</label>
+                        <input type="radio" id="miembros_escolar_' . ($i_1 + 1) . '_5_2" name="' . $tabla . '_' . ($i_1 + 1) . '_5" value="0"/><label for="miembros_escolar_' . ($i_1 + 1) . '_5_2">NO</label>
+                        </td>
                       </tr>';
                                             }
+                                            //0 = sin discapacidad
+                                            //1 = con discapacidad
                                             ?>
 
 
@@ -695,12 +735,13 @@ if ($edicion == true) {
                                             <br/>
                                             <p>5.3 Miembros del CONEI:</p>
                                         </div>
-                                        <table width="800" cellspacing="0" border="0">
+                                        <table width="900" cellspacing="0" border="0">
                                             <tr class="matriz_header_">
                                                 <td width="208">CARGO</td>
                                                 <td width="350"> APELLIDOS, NOMBRES</td>
                                                 <td width="132">SEXO</td>
                                                 <td width="102">DNI</td>
+                                                <td width="70">DISCAPACIDAD</td>
                                             </tr>
 
 
@@ -714,6 +755,9 @@ if ($edicion == true) {
                               <input type="radio" id="miembros_conei_' . ($i_1 + 1) . '_2_2" name="' . $tabla . '_' . ($i_1 + 1) . '_2" value="F"/><label for="miembros_conei_' . ($i_1 + 1) . '_2_2">F</label>
                            </td>
                            <td><input type="text" name="' . $tabla . '_' . ($i_1 + 1) . '_3" id="' . $tabla . '_' . ($i_1 + 1) . '_3" style="width:100px" class="input_text_" maxlength="12" /></td>
+                               <td><input type="radio" id="miembros_conei_' . ($i_1 + 1) . '_4_1" name="' . $tabla . '_' . ($i_1 + 1) . '_4" value="1"/><label for="miembros_conei_' . ($i_1 + 1) . '_4_1">SI</label>
+                              <input type="radio" id="miembros_conei_' . ($i_1 + 1) . '_4_2" name="' . $tabla . '_' . ($i_1 + 1) . '_4" value="0"/><label for="miembros_conei_' . ($i_1 + 1) . '_4_2">NO</label>
+                           </td>
                            </tr>';
                                             }
                                             ?>
@@ -721,7 +765,7 @@ if ($edicion == true) {
                                         </table>
                                         <div style="width:100%;height:40px;font-size:12px;font-weight:bold">
                                             <br/>
-                                            <p>5.4 El CONEI de la escueta con:</p>
+                                            <p>5.4 El CONEI de la institución educativa cuenta con:</p>
                                         </div>
                                         <table class="tabla1" rel="1" width="452" cellspacing="0" border="1" id="ins1_1">
                                             <tr  class="matriz_header_">
@@ -730,21 +774,21 @@ if ($edicion == true) {
                                                 <td width="64">NO</td>
                                             </tr>
                                             <tr>
-                                                <td>1. Reconocimiento de la Ugel</td>
-                                                <td><input class="radio_1" type="radio" id="conei_cuenta_1_1" name="T5_1" value='1'/><label for="conei_cuenta_1_1">Si</label></td>
-                                                <td><input class="radio_1" type="radio" id="conei_cuenta_1_2" name="T5_1" value='0'/><label for="conei_cuenta_1_2">No</label></td>
+                                                <td>1. Resolución directoral de la IE</td>
+                                                <td><input class="radio_1" type="radio" id="conei_cuenta_2_1" name="T5_2" value='1'/><label for="conei_cuenta_2_1">Si</label></td>
+                                                <td><input class="radio_1" type="radio" id="conei_cuenta_2_2" name="T5_2" value='0'/><label for="conei_cuenta_2_2">No</label></td>
                                             </tr>
 
                                             <tr>
-                                                <td>2. Resolución directoral</td>
-                                                <td><input class="radio_1" type="radio" id="conei_cuenta_2_1" name="T5_2" value='1'/><label for="conei_cuenta_2_1">Si</label></td>
-                                                <td><input class="radio_1" type="radio" id="conei_cuenta_2_2" name="T5_2" value='0'/><label for="conei_cuenta_2_2">No</label></td>
+                                                <td>2. Reconocimiento de la UGEL</td>
+                                                <td><input class="radio_1" type="radio" id="conei_cuenta_1_1" name="T5_1" value='1'/><label for="conei_cuenta_1_1">Si</label></td>
+                                                <td><input class="radio_1" type="radio" id="conei_cuenta_1_2" name="T5_1" value='0'/><label for="conei_cuenta_1_2">No</label></td>
                                             </tr>
 
                                         </table>
                                         <div style="width:100%;height:40px;font-size:12px;font-weight:bold">
                                             <br/>
-                                            <p>5.5 El CONEI de la escunta con:</p>
+                                            <p>5.5 La Institución educativa cuenta con:</p>
                                         </div>
                                         <table class="tabla1" rel="2" width="452" cellspacing="0" border="1" id="ins1_2">
                                             <tr  class="matriz_header_">
@@ -758,40 +802,133 @@ if ($edicion == true) {
                                                 <td><input class="radio_2" type="radio" id="conei_cuenta_3_2" name="T5_3" value='0'/><label for="conei_cuenta_3_2">No</label></td>
                                             </tr>
                                             <tr>
-                                                <td>2. Visión</td>
+                                                <td>2. PEI en proceso de elaboración<br>(marcar el avance)</td>
+                                                <td colspan="2"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><label>2.1. Identidad</label></td>
                                                 <td><input class="radio_2" type="radio" id="conei_cuenta_4_1" name="T5_4" value='1'/><label for="conei_cuenta_4_1">Si</label></td>
                                                 <td><input class="radio_2" type="radio" id="conei_cuenta_4_2" name="T5_4" value='0'/><label for="conei_cuenta_4_2">No</label></td>
                                             </tr>
                                             <tr>
-                                                <td>3. Misión</td>
+                                                <td><label>2.2. Diagnóstico</label></td>
                                                 <td><input class="radio_2" type="radio" id="conei_cuenta_5_1" name="T5_5" value='1'/><label for="conei_cuenta_5_1">Si</label></td>
                                                 <td><input class="radio_2" type="radio" id="conei_cuenta_5_2" name="T5_5" value='0'/><label for="conei_cuenta_5_2">No</label></td>
                                             </tr>
                                             <tr>
-                                                <td>4. Diagnóstico</td>
+                                                <td><label>2.3. Propuesta pedagógica</label></td>
                                                 <td><input class="radio_2" type="radio" id="conei_cuenta_6_1" name="T5_6" value='1'/><label for="conei_cuenta_6_1">Si</label></td>
                                                 <td><input class="radio_2" type="radio" id="conei_cuenta_6_2" name="T5_6" value='0'/><label for="conei_cuenta_6_2">No</label></td>
                                             </tr>
                                             <tr>
-                                                <td>5. Propuesta pedagógica </td>
+                                                <td><label>2.4. Propuesta de gestión</label></td>
                                                 <td><input class="radio_2" type="radio" id="conei_cuenta_7_1" name="T5_7" value='1'/><label for="conei_cuenta_7_1">Si</label></td>
                                                 <td><input class="radio_2" type="radio" id="conei_cuenta_7_2" name="T5_7" value='0'/><label for="conei_cuenta_7_2">No</label></td>
                                             </tr>
                                             <tr>
-                                                <td>6. Propuesta de gestión</td>
+                                                <td>3. PCI</td>
+                                                <td colspan="2"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><label>3.1. Solo cuenta con PCI</label></td>
                                                 <td><input class="radio_2" type="radio" id="conei_cuenta_8_1" name="T5_8" value='1'/><label for="conei_cuenta_8_1">Si</label></td>
                                                 <td><input class="radio_2" type="radio" id="conei_cuenta_8_2" name="T5_8" value='0'/><label for="conei_cuenta_8_2">No</label></td>
                                             </tr>
                                             <tr>
-                                                <td>7. PAT correspondiente al año actual</td>
+                                                <td>4. PAT</td>
+                                                <td colspan="2"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><label>4.1 Solo cuenta con PAT</label></td>
                                                 <td><input class="radio_2" type="radio" id="conei_cuenta_9_1" name="T5_9" value='1'/><label for="conei_cuenta_9_1">Si</label></td>
                                                 <td><input class="radio_2" type="radio" id="conei_cuenta_9_2" name="T5_9" value='0'/><label for="conei_cuenta_9_2">No</label></td>
                                             </tr>
-
                                         </table>
 
-
+                                        <!-- agregado por ever-->           
+                                        <div style="width:100%;height:40px;font-size:12px;font-weight:bold">
+                                            <br/>
+                                            <p>5.6 Autoridades de la Comunidad</p>
+                                        </div>
+                                        <table class="tabla1" rel="1" width="630" cellspacing="0" border="1" id="ins1_1">
+                                            <tr  class="matriz_header_">
+                                                <td style="width: 80px">CARGO</td>
+                                                <td colspan="2" >GOBERNADOR</td>
+                                                <td colspan="2" >TENIENTE<br>GOBERNADOR</td>
+                                                <td colspan="2" >AGENTE<br>MUNICIPAL</td>
+                                                <td colspan="2">OTROS(*)</td>
+                                                <td>TOTAL</td>
+                                            </tr>
+                                            <tr class="matriz_header_">
+                                                <td>SEXO</td>
+                                                <td>CD</td>
+                                                <td>SD</td>
+                                                <td>CD</td>
+                                                <td>SD</td>
+                                                <td>CD</td>
+                                                <td>SD</td>
+                                                <td>CD</td>
+                                                <td>SD</td>
+                                                <td colspan="2"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>HOMBRES</td>
+                                                <td><input class="radio_1" type="radio" id="autoridades_1_1" name="AT5_1" value='1'/><label for="autoridades_1_1">Si</label></td>
+                                                <td><input class="radio_1" type="radio" id="autoridades_2_1" name="AT5_1" value='0'/><label for="autoridades_2_1">No</label></td>
+                                                <td><input class="radio_1" type="radio" id="autoridades_1_2" name="AT5_2" value='1'/><label for="autoridades_1_2">Si</label></td>
+                                                <td><input class="radio_1" type="radio" id="autoridades_2_2" name="AT5_2" value='0'/><label for="autoridades_2_2">No</label></td>
+                                                <td><input class="radio_1" type="radio" id="autoridades_1_3" name="AT5_3" value='1'/><label for="autoridades_1_3">Si</label></td>
+                                                <td><input class="radio_1" type="radio" id="autoridades_2_3" name="AT5_3" value='0'/><label for="autoridades_2_3">No</label></td>
+                                                <td><input class="radio_1" type="radio" id="autoridades_1_4" name="AT5_4" value='1'/><label for="autoridades_1_4">Si</label></td>
+                                                <td><input class="radio_1" type="radio" id="autoridades_2_4" name="AT5_4" value='0'/><label for="autoridades_2_4">No</label></td>
+                                                <td colspan="2"><input type="text" name="autoridades_h" id="autoridades_h" style="width:80px" class="input_text_" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>MUJERES</td>
+                                                <td><input class="radio_1" type="radio" id="autoridades_1_5" name="AT5_5" value='1'/><label for="autoridades_1_5">Si</label></td>
+                                                <td><input class="radio_1" type="radio" id="autoridades_2_5" name="AT5_5" value='0'/><label for="autoridades_2_5">No</label></td>
+                                                <td><input class="radio_1" type="radio" id="autoridades_1_6" name="AT5_6" value='1'/><label for="autoridades_1_6">Si</label></td>
+                                                <td><input class="radio_1" type="radio" id="autoridades_2_6" name="AT5_6" value='0'/><label for="autoridades_2_6">No</label></td>
+                                                <td><input class="radio_1" type="radio" id="autoridades_1_7" name="AT5_7" value='1'/><label for="autoridades_1_7">Si</label></td>
+                                                <td><input class="radio_1" type="radio" id="autoridades_2_7" name="AT5_7" value='0'/><label for="autoridades_2_7">No</label></td>
+                                                <td><input class="radio_1" type="radio" id="autoridades_1_8" name="AT5_8" value='1'/><label for="autoridades_1_8">Si</label></td>
+                                                <td><input class="radio_1" type="radio" id="autoridades_2_8" name="AT5_8" value='0'/><label for="autoridades_2_8">No</label></td>
+                                                <td colspan="2"><input type="text" name="autoridades_m" id="autoridades_m" style="width:80px" class="input_text_" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>SUB TOTAL</td>
+                                                <td><input type="text" name="autoridades_g_1" id="autoridades_g_1" style="width:40px" class="input_text_" /></td>
+                                                <td><input type="text" name="autoridades_g_2" id="autoridades_g_2" style="width:40px" class="input_text_" /></td>
+                                                <td><input type="text" name="autoridades_t_1" id="autoridades_t_1" style="width:40px" class="input_text_" /></td>
+                                                <td><input type="text" name="autoridades_t_2" id="autoridades_t_2" style="width:40px" class="input_text_" /></td>
+                                                <td><input type="text" name="autoridades_a_1" id="autoridades_a_1" style="width:40px" class="input_text_" /></td>
+                                                <td><input type="text" name="autoridades_a_2" id="autoridades_a_2" style="width:40px" class="input_text_" /></td>
+                                                <td><input type="text" name="autoridades_o_1" id="autoridades_o_1" style="width:40px" class="input_text_" /></td>
+                                                <td><input type="text" name="autoridades_o_2" id="autoridades_o_2" style="width:40px" class="input_text_" /></td>
+                                                <td colspan="2"><input type="text" name="autoridades_total" id="autoridades_total" style="width:80px" class="input_text_" /></td>
+                                            </tr>
+                                        </table>
+<!-- hasta aquí-->                                              
+                                        <div style="width:100%;height:40px;font-size:12px;font-weight:bold">
+                                            <br/>
+                                            <p>5.7 Instituciones Gubernamentales y no Gubernamentales que intervienen en la comunidad</p>
+                                        </div>
+                                        <table class="tabla1" rel="1" width="630" cellspacing="0" border="1" id="ins1_1">
+                                            <tr  class="matriz_header_">
+                                                <td style="width: 80px">NOMBRE</td>
+                                                <td>GUBERNAMENTALES</td>
+                                                <td colspan="2" >NO<br>GUBERNAMENTALES<br>GOBERNADOR</td>
+                                                <td>TOTAL</td>
+                                            </tr>
+                                            
+                                        </table>
+<!-- otra tabla por ever-->
                                     </div>
+
+
+
+        
+<!-- -->
                                     <div id="tabs-6">
                                         <div style="width:100%;height:40px;font-size:12px;font-weight:bold">
                                             <br/>
