@@ -139,7 +139,7 @@ $(function(){
         n_2=parseInt($(this).val()) + esnulo(parseInt($('#numero_padres').val()));
         $('#total_padres').attr('value' ,ifNaN(n_2));
         $('#total_CD').attr('value',esnulo(parseInt($(this).val()))+esnulo(parseInt($('#numero_madres_d').val())));
-        $('#total').attr('value', esnulo(parseInt($('#total_CD').val()))+esnulo(parseInt($('#total_SD').val())));
+        $('#numero_padres_t').attr('value', esnulo(parseInt($('#total_CD').val()))+esnulo(parseInt($('#total_SD').val())));
     })
 
     $("#numero_padres").keyup(function(){
@@ -148,7 +148,7 @@ $(function(){
         n_2=esnulo(parseInt($('#numero_padres_d').val()));
         $('#total_padres').attr('value' ,n_1 + n_2);
         $('#total_SD').attr('value',n_1+esnulo(parseInt($('#numero_madres').val())));
-        $('#total').attr('value', esnulo(parseInt($('#total_CD').val()))+esnulo(parseInt($('#total_SD').val())));
+        $('#numero_padres_t').attr('value', esnulo(parseInt($('#total_CD').val()))+esnulo(parseInt($('#total_SD').val())));
     })
 
     $("#numero_madres_d").keyup(function(){
@@ -156,7 +156,7 @@ $(function(){
         n_2=parseInt($(this).val()) + esnulo(parseInt($('#numero_madres').val()));
         $('#total_madres').attr('value' ,esnulo(n_2));
         $('#total_CD').attr('value',esnulo(parseInt($('#numero_padres_d').val())) + esnulo(parseInt($(this).val())));
-        $('#total').attr('value', esnulo(parseInt($('#total_CD').val()))+esnulo(parseInt($('#total_SD').val())));
+        $('#numero_padres_t').attr('value', esnulo(parseInt($('#total_CD').val()))+esnulo(parseInt($('#total_SD').val())));
     })
 
     $("#numero_madres").keyup(function(){
@@ -165,7 +165,7 @@ $(function(){
         n_2=esnulo(parseInt($('#numero_madres_d').val()));
         $('#total_madres').attr('value' ,n_1 + n_2);
         $('#total_SD').attr('value',n_1+esnulo(parseInt($('#numero_padres').val())));
-        $('#total').attr('value', esnulo(parseInt($('#total_CD').val()))+esnulo(parseInt($('#total_SD').val())));
+        $('#numero_padres_t').attr('value', esnulo(parseInt($('#total_CD').val()))+esnulo(parseInt($('#total_SD').val())));
     })
 
 
@@ -258,7 +258,121 @@ $(function(){
         $("#poblacion_t_7").attr("value", ifNaN( $("#poblacion_t_3").val())+ ifNaN($("#poblacion_t_6").val()));
     });
 
-
+    /**********************************/
+    //funciones de suma
+    function suma_todo(a){
+        var a1,a2,a3,a4,a5,a6,a7,a8;
+        a1 =esnulo(parseInt($("#autoridades_"+a+"_1").val()));
+        a2 =esnulo(parseInt($("#autoridades_"+a+"_2").val()));
+        a3 =esnulo(parseInt($("#autoridades_"+a+"_3").val()));
+        a4 =esnulo(parseInt($("#autoridades_"+a+"_4").val()));
+        a5 =esnulo(parseInt($("#autoridades_"+a+"_5").val()));
+        a6 =esnulo(parseInt($("#autoridades_"+a+"_6").val()));
+        a7 =esnulo(parseInt($("#autoridades_"+a+"_7").val()));
+        a8 =esnulo(parseInt($("#autoridades_"+a+"_8").val()));
+        return a1+a2+a3+a4+a5+a6+a7+a8;
+    }
+    function total_suma(){
+      var t1,t2;
+      t1 = suma_todo('1');
+      t2 = suma_todo('2');
+      return t1+t2;
+    }
+    function suma_uno(b){
+        var b1,b2;
+        b1 =esnulo(parseInt($("#autoridades_1_"+b).val()));
+        b2 =esnulo(parseInt($("#autoridades_2_"+b).val())); 
+        return b1+b2;
+    }
+ 
+    //funciones de key
+    $("#autoridades_1_1").keyup(function(){
+        $('#autoridades_3_1').attr('value' ,suma_uno('1'));
+        $('#autoridades_h').attr('value' ,suma_todo('1'));
+        $('#autoridades_total').attr('value' ,total_suma());
+    });
+    $("#autoridades_2_1").keyup(function(){
+        $('#autoridades_3_1').attr('value' ,suma_uno('1'));
+        $('#autoridades_m').attr('value' ,suma_todo('2'));
+        $('#autoridades_total').attr('value' ,total_suma());
+    });
+    $("#autoridades_1_2").keyup(function(){
+        $('#autoridades_3_2').attr('value' ,suma_uno('2'));
+        $('#autoridades_h').attr('value' ,suma_todo('1'));
+        $('#autoridades_total').attr('value' ,total_suma());
+    });
+    
+    $("#autoridades_2_2").keyup(function(){
+        $('#autoridades_3_2').attr('value' ,suma_uno('2'));
+        $('#autoridades_m').attr('value' ,suma_todo('2'));
+        $('#autoridades_total').attr('value' ,total_suma());
+    });
+    $("#autoridades_1_3").keyup(function(){
+        $('#autoridades_3_3').attr('value' ,suma_uno('3'));
+        $('#autoridades_h').attr('value' ,suma_todo('1'));
+        $('#autoridades_total').attr('value' ,total_suma());
+    });
+    
+    $("#autoridades_2_3").keyup(function(){
+        $('#autoridades_3_3').attr('value' ,suma_uno('3'));
+        $('#autoridades_m').attr('value' ,suma_todo('2'));
+        $('#autoridades_total').attr('value' ,total_suma());
+    });
+    $("#autoridades_1_4").keyup(function(){
+        $('#autoridades_3_4').attr('value' ,suma_uno('4'));
+        $('#autoridades_h').attr('value' ,suma_todo('1'));
+        $('#autoridades_total').attr('value' ,total_suma());
+    });
+    
+    $("#autoridades_2_4").keyup(function(){
+        $('#autoridades_3_4').attr('value' ,suma_uno('4'));
+        $('#autoridades_m').attr('value' ,suma_todo('2'));
+        $('#autoridades_total').attr('value' ,total_suma());
+    });
+    $("#autoridades_1_5").keyup(function(){
+        $('#autoridades_3_5').attr('value' ,suma_uno('5'));
+        $('#autoridades_h').attr('value' ,suma_todo('1'));
+        $('#autoridades_total').attr('value' ,total_suma());
+    });
+    
+    $("#autoridades_2_5").keyup(function(){
+        $('#autoridades_3_5').attr('value' ,suma_uno('5'));
+        $('#autoridades_m').attr('value' ,suma_todo('2'));
+        $('#autoridades_total').attr('value' ,total_suma());
+    });
+    $("#autoridades_1_6").keyup(function(){
+        $('#autoridades_3_6').attr('value' ,suma_uno('6'));
+        $('#autoridades_h').attr('value' ,suma_todo('1'));
+        $('#autoridades_total').attr('value' ,total_suma());
+    });
+    
+    $("#autoridades_2_6").keyup(function(){
+        $('#autoridades_3_6').attr('value' ,suma_uno('6'));
+        $('#autoridades_m').attr('value' ,suma_todo('2'));
+        $('#autoridades_total').attr('value' ,total_suma());
+    });
+        $("#autoridades_1_7").keyup(function(){
+        $('#autoridades_3_7').attr('value' ,suma_uno('7'));
+        $('#autoridades_h').attr('value' ,suma_todo('1'));
+        $('#autoridades_total').attr('value' ,total_suma());
+    });
+    
+    $("#autoridades_2_7").keyup(function(){
+        $('#autoridades_3_7').attr('value' ,suma_uno('7'));
+        $('#autoridades_m').attr('value' ,suma_todo('2'));
+        $('#autoridades_total').attr('value' ,total_suma());
+    });
+    $("#autoridades_1_8").keyup(function(){
+        $('#autoridades_3_8').attr('value' ,suma_uno('8'));
+        $('#autoridades_h').attr('value' ,suma_todo('1'));
+        $('#autoridades_total').attr('value' ,total_suma());
+    });
+    
+    $("#autoridades_2_8").keyup(function(){
+        $('#autoridades_3_8').attr('value' ,suma_uno('8'));
+        $('#autoridades_m').attr('value' ,suma_todo('2'));
+        $('#autoridades_total').attr('value' ,total_suma());
+    });
     //***************************************
 
     $("#enca_fecha" ).datepicker({
@@ -659,10 +773,11 @@ function agregar_personal()
         }
     }
     var str="<tr id='"+item+"' class='rw_nn'>";
-    str+="<td height='84'>"+item+"</td>";
-    str+="<td>&nbsp;<input type='text' name='personal_"+item+"_0' id='personal_"+item+"_0' size='19' maxlength='100' style='text-transform: uppercase' ></td>";
+    str+="<td>"+item+"</td>";
+    str+="<td><input type='text' name='personal_"+item+"_0' id='personal_"+item+"_0' size='19' maxlength='100' style='text-transform: uppercase' ></td>";
+    str+="<td><select name='personal_"+item+"_7' id='personal_"+item+"_7' ><option value='1'>F</option><option value='2'>M</option></select></td>";
     //**
-    str+="<td class='chk_dir' ><div > <input type='checkbox' name='personal_"+item+"_19' id='personal_"+item+"_19' value='1' /><label for='personal_"+item+"_19'> </label></div></td>";
+    str+="<td class='chk_dir' ><input type='checkbox' name='personal_"+item+"_19' id='personal_"+item+"_19' value='1' /><label for='personal_"+item+"_19'> </label></td>";
     //**
     str+="<td>";
     str+="<p class='chk_itm'>";
@@ -675,20 +790,24 @@ function agregar_personal()
     str+="<input type='checkbox' name='personal_"+item+"_1' id='personal_"+item+"_"+(_item+5)+"' value='6' /><label for='personal_"+item+"_"+(_item+5)+"'>6° </label>";
     str+="</p>";
     str+="</td>";
-    str+="<td class='chk_dir' ><div > <input type='checkbox' name='personal_"+item+"_18' id='personal_"+item+"_18' value='1' /><label for='personal_"+item+"_18'> </label></div></td>";
-    str+="<td><input name='personal_"+item+"_2' id='personal_"+item+"_2' size='4' type='text' maxlength='4'/></td>";
-    str+="<td><input type='text' name='personal_"+item+"_3' id='personal_"+item+"_3' size='6' maxlength='6' class='itm_nn' /></td>";
+    //str+="<td class='chk_dir' ><div > <input type='checkbox' name='personal_"+item+"_18' id='personal_"+item+"_18' value='1' /><label for='personal_"+item+"_18'> </label></div></td>";
+    str+="<td><input name='personal_"+item+"_20' id='personal_"+item+"_20' size='4' type='text' maxlength='4'/></td>";
+    str+="<td><input name='personal_"+item+"_21' id='personal_"+item+"_21' size='4' type='text' maxlength='4'/></td>";
+    str+="<td><input name='personal_"+item+"_22' id='personal_"+item+"_22' size='4' type='text' maxlength='4'/></td>";
+    str+="<td><input name='personal_"+item+"_23' id='personal_"+item+"_23' size='4' type='text' maxlength='4'/></td>";
     str+="<td><input type='text' name='personal_"+item+"_4' id='personal_"+item+"_4' size='6' maxlength='6' class='itm_nn'/></td>";
     str+="<td><input type='text' name='personal_"+item+"_5' id='personal_"+item+"_5' size='6' maxlength='6' class='itm_nn'/></td>";
     str+="<td><input type='text' name='personal_"+item+"_6' id='personal_"+item+"_6' size='6' maxlength='6' class='itm_nn'/></td>";
-    str+="<td><select name='personal_"+item+"_7' id='personal_"+item+"_7' ><option value='1'>F</option><option value='2'>M</option></select></td>";
-    str+="<td><select name='personal_"+item+"_8' id='personal_"+item+"_8' >";
-    str+="<option value='1'>Soltero</option>";
-    str+="<option value='2'>Casado</option>";
-    str+="<option value='3'>Conviviente</option>";
-    str+="<option value='4'>Divorciado</option>";
-    str+="<option value='5'>Viudo</option>";
-    str+="</select></td>";
+    //
+    str+="<td><input type='text' name='personal_"+item+"_3' id='personal_"+item+"_3' size='6' maxlength='6' class='itm_nn'/></td>";
+    
+    //    str+="<td><select name='personal_"+item+"_8' id='personal_"+item+"_8' >";
+    //    str+="<option value='1'>Soltero</option>";
+    //    str+="<option value='2'>Casado</option>";
+    //    str+="<option value='3'>Conviviente</option>";
+    //    str+="<option value='4'>Divorciado</option>";
+    //    str+="<option value='5'>Viudo</option>";
+    //    str+="</select></td>";
     str+="<td style='font-size:10px;'><a href='javascript:del_8("+item+")'  class='btn_edit_'>Eliminar</a></td>";
     str+="</tr>";
     var _datos= $(str);
@@ -705,13 +824,13 @@ function agregar_personal()
     str_2+="<option value='4' >Reasignado </option>";
     str_2+="<option value='5' >Publico</option>";
     str_2+="</select ></td>";
-    str_2+="<td><input type='text' name='personal_"+item_2+"_10' id='personal_"+item_2+"_10' class='fecha' size='6' maxlength='6' /></td>";
+    str_2+="<td width='97'><input type='text' name='personal_"+item_2+"_10' id='personal_"+item_2+"_10' class='fecha' size='6' maxlength='6' /></td>";
     str_2+="<td><input type='text' name='personal_"+item_2+"_11' id='personal_"+item_2+"_11'  size='10' maxlength='10'  /></td>";
     str_2+="<td><input type='text' name='personal_"+item_2+"_12' id='personal_"+item_2+"_12'  style='width:115px' maxlength='100' class='distrito_set' />";
     str_2+="<input type='hidden' name='personal_"+item_2+"_13' id='personal_"+item_2+"_13' />";
     str_2+="</td>";
-    str_2+="<td><input type='text' name='personal_"+item_2+"_14' id='personal_"+item_2+"_14'  size='20' maxlength='100'/></td>";
     str_2+="<td><select name='personal_"+item_2+"_15' id='personal_"+item_2+"_15' ><option value='1'>Si</option><option value='2'>No</option></select></td>";
+    str_2+="<td><input type='text' name='personal_"+item_2+"_14' id='personal_"+item_2+"_14'  size='20' maxlength='100'/></td>";    
     str_2+="<td><input type='text' name='personal_"+item_2+"_16' id='personal_"+item_2+"_16'  size='20' maxlength='100'/></td>";
     str_2+="<td><input type='text' name='personal_"+item_2+"_17' id='personal_"+item_2+"_17'  size='10' maxlength='20' /></td>";
     str_2+="";

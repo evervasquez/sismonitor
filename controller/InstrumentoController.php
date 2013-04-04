@@ -680,6 +680,8 @@ ON nivel_logro.niv_id=respuesta.niv_id WHERE enca_id=$id_");
         $data['municipio_escolar'] = $instrumento->getSelect("SELECT * FROM municipio_escolar WHERE inst_id=$id_");
         $data['conei'] = $instrumento->getSelect("SELECT * FROM conei WHERE inst_id=$id_");
         $data['ambiente'] = $instrumento->getSelect("SELECT * FROM ambiente WHERE inst_id=$id_");
+        $data['autoridades'] = $instrumento->getSelect("SELECT * FROM autoridades WHERE inst_id=$id_");
+        $data['gubernamentales'] = $instrumento->getSelect("SELECT * FROM instituciones_gubernamentales WHERE inst_id=$id_");
         $data['personal'] = $instrumento->getSelect("SELECT *,ubigeo.Nombre FROM personal LEFT JOIN ubigeo ON ubigeo.Ubigeo = personal.pers_lugar_nac WHERE inst_id=$id_ ORDER BY pers_es_director");
         $data['observacion'] = $instrumento->getSelect("SELECT * FROM observacion_one WHERE enca_id=" . $data['encabezado']['enca_id'] . "");
 
